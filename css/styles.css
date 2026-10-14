@@ -1,0 +1,114 @@
+/* this create fluid images throughout the site */
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+
+    /* when an image has width and height attributes in the html, the browser will use that exact height. without height auto, the image shrinks in width, but keeps the full height. This is allows the height to adjust along with the width */
+}
+
+/* display: block 去掉图片作为行内元素时底部的那一小条空隙，也方便用 margin 和 flex 排版。
+max-width: 100% 图片不会比容器宽，容器缩小时图片跟着缩。
+height: auto 高度按宽度的比例自动算。 */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Starting with the generic css， starting mobile first, but this also applies to all screen size. */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f3d2b;
+}
+
+.inner-container {
+    max-width: 56.25rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+}
+
+/* responsive background image */
+
+header {
+    min-height: 25rem;
+    /* The one place to use height, is with a background image to see more areas of the image. */
+    padding: 3rem 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    background-color: #e9eaee;
+    background-image: url(../img/small-bg.jpg);
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    p {
+        font-size: 1.125rem;
+    }
+}
+
+/* This media query is to adjust the column layout at 700px */
+
+@media screen and (min-width: 700px) {
+    .featured {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .featured div,
+    picture {
+        flex: 1;
+    }
+}
+
+/* medium screens: swap in the 1200px wide image */
+
+@media screen and (min-width: 1100px) {
+    header  {
+        min-height: 37.5rem;
+        background-image: url(../img/med-bg.jpg);
+    }
+}
+
+/* large screens: swap in the 1800px wide image */
+
+@media screen and (min-width: 1700px) {
+    header  {
+        min-height: 46.875rem;
+        background-image: url(../img/lg-bg.jpg);
+    }
+}
+
+/* .featured {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 3rem;
+}
+
+@media (min-width: 48em) {
+    .featured {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .featured > * {
+        flex: 1 1 50%;
+    }
+} */
